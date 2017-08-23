@@ -35,6 +35,55 @@ var newObj = deep_copy(obj);
 console.log(newObj);
 newObj.g == obj.g;
 
+//进制转换
+function convert(from, to, initial) {
+  var chars = "0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ",
+    initial = String(initial),
+    number_ten = 0;
+  //先将from进制的数字转化为十进制
+  //以二进制数1010为例，转化为十进制：0*2^0 + 1*2^1 + 0*2^2 + 1*2^3 = 10
+  for (var i = 0; i < initial.length; i++) {
+    number_ten += Math.pow(from, i) * chars.indexOf(initial.charAt(initial.length - i - 1));
+  }
+  //然后将十进制的数字转化为to进制
+  //以十进制数10为例，转化为2进制：10/2商5余0，5/2商2余1，2/2商1余0，1/2商0余1，故最终结果为1010
+  var result_to = [];
+  var mod = 0;
+  do {
+    mod = number_ten % to;
+    number_ten = (number_ten - mod) / to;
+    result_to.unshift(chars.split("")[mod]);
+  } while (number_ten);
+  return result_to.join("");
+}
+console.log(convert(10, 32, 1010000));
+
+//函数节流：在指定时间间隔内只执行一次函数，可以理解为在函数首次触发间隔指定时间再执行
+function throttle(fn, interval = 100) {
+  var canRun = true;
+  return function () {
+    if (!canRun) {
+      return;
+    }
+    canRun = false;
+    fn.apply(this, arguments);
+    setTimeout(() => {
+      canRun = true;
+    }, interval);
+  }
+}
+
+//函数防抖，只有触发的时间间隔超过一定的时间才执行函数，可以理解为函数最后触发间隔指定时间再执行
+function debounce(fn, interval = 100) {
+  var timer = null;
+  return function name(params) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, arguments);
+    }, interval);
+  }
+}
+
 //冒泡排序
 function bubble_sort(arr) {
   function swap(i, j, arr) {
@@ -60,7 +109,11 @@ var myArr = [3, 4, 7, 5, 8, 2, 9, 5, 1, 2, 5];
 bubble_sort(myArr);
 console.log(myArr);
 
-//插入排序
+//直接插入排序
+/**
+ * 排序类型      平均情况    最好情况    最坏情况	    辅助空间    稳定性
+ * 直接插入排序   O(n²)	     O(n)	      O(n²)        O(1)       稳定
+ */
 function insert_sort(arr) {
   function swap(i, j, arr) {
     var temp = arr[i];
@@ -82,6 +135,10 @@ insert_sort(myArr);
 console.log(myArr);
 
 //快速排序
+/**
+ * 排序类型    平均情况    最好情况    最坏情况    辅助空间    稳定性
+ * 快速排序    O(nlog₂n)   O(nlog₂n)  O(n²)      O(nlog₂n)  不稳定
+ */
 function fast_sort(min, max, arr) {
   if (min >= max) {
     return;
@@ -112,6 +169,10 @@ fast_sort(0, myArr.length - 1, myArr);
 console.log(myArr);
 
 //选择排序
+/**
+ * 排序类型    平均情况    最好情况    最坏情况    辅助空间    稳定性
+ * 选择排序     O(n²)      O(n²)      O(n²)      O(1)       不稳定
+ */
 function select_sort(arr) {
   function swap(i, j, arr) {
     var temp = arr[i];
@@ -134,7 +195,10 @@ select_sort(myArr);
 console.log(myArr);
 
 //希尔排序，也称缩小增量排序，将数组拆分为若干个子分组, 每个分组由相距一定"增量"的元素组成，然后对分组进行直接插入排序
-
+/**
+ * 排序类型    平均情况    最好情况    最坏情况    辅助空间    稳定性
+ * 希尔排序     O(n^1.3)   O(nlogn)   O(n²)      O(1)       不稳定
+ */
 function direct_insert_sort(arr, gap) {
   function swap(arr, i, j) {
     var temp = arr[i];
@@ -165,9 +229,10 @@ shell_sort(myArr);
 console.log("result:" + myArr);
 
 //归并排序、将数组拆分为两个子数组, 分别排序, 最后才将两个子数组合并; 拆分的两个子数组, 再继续递归拆分为更小的子数组, 进而分别排序, 直到数组长度为1, 直接返回该数组为止.
-//平均时间复杂度：O(nlog₂n)
-//最好情况: O(nlog₂n)
-//空间复杂度: O(n)
+/**
+ * 排序类型    平均情况    最好情况    最坏情况    辅助空间    稳定性
+ * 归并排序     O(nlog₂n)  O(nlog₂n)  O(nlog₂n)  O(n)       稳定
+ */
 function merge(left, right) {
   var result = [];
   while (left.length > 0 && right.length > 0) {
