@@ -1,23 +1,19 @@
-//快速排序
-function quick_sort(arr, min, max) {
-  if (min >= max) {
-    return;
+//归并排序
+function merge_sort(arr) {
+  if (arr.length <= 1) {
+    return arr;
   }
-  var index = min;
-  for (var i = min + 1; i < max + 1; i++) {
-    if (arr[index] > arr[i]) {
-      var temp = arr[i];
-      for (var j = i - 1; j >= index; j--) {
-        arr[j + 1] = arr[j];
-      }
-      arr[index] = temp;
-      index++;
+
+  function merge_arr(left, right) {
+    var result = [];
+    while (left.length && right.length) {
+      left[0] > right[0] ? result.push(right.shift()) : result.push(left.shift());
     }
+    return left.length > 0 ? result.concat(left) : result.concat(right);
   }
-  quick_sort(arr, 0, index - 1);
-  quick_sort(arr, index + 1, max);
+  return merge_arr(merge_sort(arr.slice(0, arr.length >> 1)), merge_sort(arr.slice(arr.length >> 1)));
 }
 
-var myArr = [3, 4, 7, 5, 8, 2, 9, 6, 1, 2, 5];
-quick_sort(myArr, 0, myArr.length - 1);
+var myArr = [3, 4, 7, 5, 8, 2, 9, 6, 1, 2, 1];
+myArr = merge_sort(myArr);
 console.log("result:" + myArr);

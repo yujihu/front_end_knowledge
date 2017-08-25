@@ -255,3 +255,42 @@ var myArr = [3, 4, 7, 5, 8, 2, 9, 6, 1, 2, 5];
 
 myArr = merge_sort(myArr);
 console.log(myArr);
+
+//堆排序，大根堆要求每个子节点的值都不大于其父节点的值（最大值在堆顶），小根堆每个子节点的值都不小于其父节点的值
+function swap(arr, i, j) {
+  var temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+
+function heapAdjust(arr, i, length) { //堆调整
+  var left = 2 * i + 1,
+    right = 2 * i + 2,
+    largest = i;
+  if (left < length && arr[left] > arr[largest]) {
+    largest = left;
+    swap(arr, i, left);
+    heapAdjust(arr, left, length);
+  }
+  if (right < length && arr[right] > arr[largest]) {
+    largest = right;
+    swap(arr, i, right);
+    heapAdjust(arr, right, length);
+  }
+}
+
+function heap_sort(arr) {
+  //建大顶堆
+  var length = arr.length;
+  for (var i = arr.length >> 1; i >= 0; i--) {
+    heapAdjust(arr, i, arr.length);
+  }
+  for (var j = arr.length - 1; j > 0; j--) {
+    swap(arr, 0, j);
+    heapAdjust(arr, 0, --length);//堆调整
+  }
+}
+var myArr = [3, 4, 7, 5, 8, 2, 9, 6, 1, 2, 5];
+
+heap_sort(myArr);
+console.log(myArr);
