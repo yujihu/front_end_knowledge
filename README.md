@@ -209,5 +209,13 @@ request.send();
 >- cursor（鼠标悬停在元素上时显示的光标）
 ### 4、z-index不起作用怎么办
 - 原因
->
+>- 问题一：元素是非定位元素，z-index属性作用于定位元素之上（position:relative、absolute、fixed）
+>- 问题二：z-index的拼爹性质，父元素的z-index小于其兄弟元素的z-index，导致子元素无论设置多大的z-index都不生效
 - 解决方案
+>- 问题一：将元素设置成定位元素
+>- 问题二：去掉父元素的z-index属性
+## JS相关问题
+### 1、原型链属性遮蔽
+>* 如果一个普通的名为foo的数据访问属性在[[Prototype]]链的高层某处被找到，而且没有被标记为只读（writable:false），那么一个名为foo的新属性就直接添加到 myObject上，形成一个遮蔽属性。
+>* 如果一个foo在[[Prototype]]链的高层某处被找到，但是它被标记为只读（writable:false），那么设置既存属性和在myObject上创建遮蔽属性都是不允许的。如果代码运行在strict mode下，一个错误会被抛出。否则，这个设置属性值的操作会被无声地忽略。不论怎样，没有发生遮蔽。
+>* 如果一个foo在[[Prototype]]链的高层某处被找到，而且它是一个setter，那么这个setter总是被调用。没有foo会被添加到（也就是遮蔽在）myObject上，这个foo setter也不会被重定义。
