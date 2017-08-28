@@ -7,6 +7,23 @@
 ### 4、[前端页面渲染机制](http://blog.codingplayboy.com/2017/03/29/webpage_render/#DOM)
 ### 5、[viewport详解](https://github.com/ant-design/ant-design-mobile/wiki/viewport%E8%AF%A6%E8%A7%A3)
 ### 6、[块格式上下文BFC](https://juejin.im/post/5909db2fda2f60005d2093db)
+>1. BFC的触发条件
+  >>* 根元素，即HTML元素
+  >>* float非none
+  >>* overflow非visible
+  >>* position为absolute、fixed
+  >>* display为inline-block、table-cell、table-caption、flex
+>2. BFC的布局规则
+  >* 内部的box在垂直方向上排列
+  >* 垂直间距由margin决定，相邻margin会重叠
+  >* BFC区域不会被float元素重叠
+  >* BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此
+  >* 计算高度时会把float元素计算在内
+>3. 作用
+  >>* 自适应两栏布局
+  >>* 阻止元素被浮动元素覆盖
+  >>* 包含浮动元素
+  >>* 阻止外边距合并
 ### 7、XSS与CSRF
 >- [XSS:跨站脚本攻击](http://mp.weixin.qq.com/s/6ChuUdOm7vej8vQ3dbC8fw)
 >> 攻击者通过一些手段，将一些恶意内容，比如js脚本，插入到受攻击的网站，用户使用浏览器进行访问时就会受到攻击。分为三种类型：
@@ -24,24 +41,6 @@
 >> 防御举措：
 >>>- referer白名单
 >>>- 请求中携带token
-
->1. BFC的触发条件
-  >>* 根元素，即HTML元素
-  >>* float非none
-  >>* overflow非visible
-  >>* position为absolute、fixed
-  >>* display为inline-block、table-cell、table-caption
->2. BFC的布局规则
-  >* 内部的box在垂直方向上排列
-  >* 垂直间距由margin决定，相邻margin会重叠
-  >* BFC区域不会被float元素重叠
-  >* BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此
-  >* 计算高度时会把float元素计算在内
->3. 作用
-  >>* 自适应两栏布局
-  >>* 阻止元素被浮动元素覆盖
-  >>* 包含浮动元素
-  >>* 阻止外边距合并
 ### 8、不支持冒泡的事件
 >* mouseenter、mouseleave
 >* load、unload
