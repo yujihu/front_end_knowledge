@@ -20,12 +20,17 @@
   >* BFC区域不会被float元素重叠
   >* BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此
   >* 计算高度时会把float元素计算在内
+>3. 作用
+  >>* 自适应两栏布局
+  >>* 阻止元素被浮动元素覆盖
+  >>* 包含浮动元素
+  >>* 阻止外边距合并
 ### 7、不支持冒泡的事件
 >* mouseenter、mouseleave
 >* load、unload
 >* focus、blur
 >* error
->* abort
+>* abort（中断，图片记载中断，请求发送中断等）
 >* resize
 ### 8、前端SEO注意事项
 >1. 合理设置title、description、keywords，三者的权重递减
@@ -164,9 +169,29 @@ request.send();
 >* 2：正在发送请求
 >* 3：正在接受服务器响应
 >* 4：接受服务器响应完毕
-
+## HTML相关问题
+### 1、块级元素与行内元素
+- 常见的块级元素
+> div、p、form、h1~h6、ul、ol、li、dl（定义列表）、dt（列表中的项目）、dd（项目的描述）
+- 常见的行内元素
+> span、a、b、img、input、select、lable、textarea
+- 块级元素的特点
+>- 垂直方向排列
+>- 独占一行，宽度自动填充父容器宽度
+>- 可设置宽高及内外边距
+>- 可容纳其他块级元素与行内元素
+- 行内元素的特点
+>- 水平方向排列
+>- 宽度由内容决定，高度由字体大小决定
+>- 无法设置宽高及水平外边距
+>- 可容纳文本及其他行内元素
+- 行内元素如何转为块级元素
+>- float: left、right
+>- position: absolute、fixed
+>- display: block
 ## CSS相关问题
-### 1、padding的取值单位有哪些，当为百分比时是如何取值的
+### 1、[三栏布局](https://zhuanlan.zhihu.com/p/25070186?refer=learncoding)
+### 2、padding的取值单位有哪些，当为百分比时是如何取值的
 #### height的百分比取值相对于父元素的content height
 #### width、padding、margin的百分比取值相对于父元素的content width
 #### top、bottom的百分比取值相对于父元素的padding（height）+content（height）
@@ -179,7 +204,7 @@ request.send();
 >* vmin（vh、vw的较小者）
 >* vmax（vh、vw的较大者）
 >* %
-### 2、清除浮动的常用方式
+### 3、清除浮动的常用方式
 >1. BFC
 >2. 伪元素
 ```javascript
@@ -194,7 +219,7 @@ request.send();
 }
 ```
 >3. 容器元素闭合标签前添加额外元素并设置clear: both
-### 3、CSS可以继承的属性
+### 4、CSS可以继承的属性
 >- 文字排版相关
   >>- font
   >>- text-align（文本对其方式）
@@ -207,7 +232,7 @@ request.send();
 >- color
 >- visibility
 >- cursor（鼠标悬停在元素上时显示的光标）
-### 4、z-index不起作用怎么办
+### 5、z-index不起作用怎么办
 - 原因
 >- 问题一：元素是非定位元素，z-index属性作用于定位元素之上（position:relative、absolute、fixed）
 >- 问题二：z-index的拼爹性质，父元素的z-index小于其兄弟元素的z-index，导致子元素无论设置多大的z-index都不生效
@@ -219,3 +244,34 @@ request.send();
 >* 如果一个普通的名为foo的数据访问属性在[[Prototype]]链的高层某处被找到，而且没有被标记为只读（writable:false），那么一个名为foo的新属性就直接添加到 myObject上，形成一个遮蔽属性。
 >* 如果一个foo在[[Prototype]]链的高层某处被找到，但是它被标记为只读（writable:false），那么设置既存属性和在myObject上创建遮蔽属性都是不允许的。如果代码运行在strict mode下，一个错误会被抛出。否则，这个设置属性值的操作会被无声地忽略。不论怎样，没有发生遮蔽。
 >* 如果一个foo在[[Prototype]]链的高层某处被找到，而且它是一个setter，那么这个setter总是被调用。没有foo会被添加到（也就是遮蔽在）myObject上，这个foo setter也不会被重定义。
+### 2、函数节流与函数防抖
+>1. 函数节流：指定时间间隔内只会执行一次函数（强调首次触发执行的间隔）
+```javascript
+function throttle(fn, interval) {
+  var canRun = true;
+  return function () {
+    if (canRun) {
+      canRun = false;
+      fn.apply(this, arguments);
+      setTimeout(function () {
+        canRun = true;
+      }, interval);
+    }
+  }
+}
+```
+>2. 函数防抖：频繁任务触发的情况下,任务触发的时间间隔超过一定时间才会执行（强调最后一次触发到执行的间隔）
+```javascript
+function debounce(fn, interval) {
+  var timer = null;
+  return function () {
+    if (timer) {
+      clearTimeout(timer);
+    } else {
+      timer = setTimeout(() => {
+        fn.apply(this, arguments);
+      }, interval);
+    }
+  }
+}
+```
