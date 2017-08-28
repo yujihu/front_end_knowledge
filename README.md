@@ -7,6 +7,23 @@
 ### 4、[前端页面渲染机制](http://blog.codingplayboy.com/2017/03/29/webpage_render/#DOM)
 ### 5、[viewport详解](https://github.com/ant-design/ant-design-mobile/wiki/viewport%E8%AF%A6%E8%A7%A3)
 ### 6、[块格式上下文BFC](https://juejin.im/post/5909db2fda2f60005d2093db)
+### 7、XSS与CSRF
+>- [XSS:跨站脚本攻击](http://mp.weixin.qq.com/s/6ChuUdOm7vej8vQ3dbC8fw)
+>> 攻击者通过一些手段，将一些恶意内容，比如js脚本，插入到受攻击的网站，用户使用浏览器进行访问时就会受到攻击。分为三种类型：
+>>>1. 存储型XSS：数据库中存有的存在XSS攻击的数据，返回给客户端。若数据未经过任何转义，被浏览器渲染。就可能导致XSS攻击
+>>>2. 反射型XSS：将用户输入的存在XSS攻击的数据，发送给后台，后台并未对数据进行存储，也未经过任何过滤，直接返回给客户端，被浏览器渲染，就可能导致XSS攻击
+>>>3. DOM-XSS：纯粹发生在客户端的XSS攻击
+
+>> 防御举措
+>>> 对输入输出进行过滤和转义
+>- [CSRF:跨站请求伪造](https://www.qcloud.com/community/article/279687?fromSource=gwzcw.107201.107201.107201)
+>> 攻击者盗用了受害者的身份，以受害者的名义发送请求，受害者必须依次完成两个步骤才会遭受攻击：
+>>>1. 登录受信任网站A，并在本地存储了cookie
+>>>2. 在不登出A的情况下，访问危险网站B
+
+>> 防御举措：
+>>>- referer白名单
+>>>- 请求中携带token
 
 >1. BFC的触发条件
   >>* 根元素，即HTML元素
@@ -25,21 +42,21 @@
   >>* 阻止元素被浮动元素覆盖
   >>* 包含浮动元素
   >>* 阻止外边距合并
-### 7、不支持冒泡的事件
+### 8、不支持冒泡的事件
 >* mouseenter、mouseleave
 >* load、unload
 >* focus、blur
 >* error
 >* abort（中断，图片记载中断，请求发送中断等）
 >* resize
-### 8、前端SEO注意事项
+### 9、前端SEO注意事项
 >1. 合理设置title、description、keywords，三者的权重递减
 >2. 语义化HTML，符合W3C规范
 >3. 重要的内容放在最前面
 >4. 少用iframe
 >5. 非装饰性图片添加alt属性
 >6. 提高网站的响应速度
-### 9、浏览器内核与对应前缀
+### 10、浏览器内核与对应前缀
 | 浏览器| 内核|前缀|
 | --------|--------|--------|
 | Chrome| WebKit |-webkit-|
@@ -47,7 +64,7 @@
 | IE|Trident|-ms-|
 | FireFox|Gecko|-moz-|
 | Opera|Presto|-o-|
-### 10、浏览器常见的兼容性问题
+### 11、浏览器常见的兼容性问题
 >* CSS兼容问题
   >>1. png24位图片在ie6上出现背景，解决方案使用8位png图片
   >>2. 浮动元素设置了margin在IE6下会产生双倍margin,解决方案将浮动元素设置display: inline
@@ -57,7 +74,7 @@
   >>1. IE下event不存在target属性,使用srcElement代替
   >>2. event的x,y在IE中支持，pageX和pageY在Firefox中支持
   >>3. 老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-### 11、从浏览器地址栏输入url到显示页面的步骤
+### 12、从浏览器地址栏输入url到显示页面的步骤
 >1. 在浏览器中输入url并回车
 >2. 浏览器查看该url对应的缓存是否存在，存在的话检查是否过期（命中强缓存），没有过期的话直接从缓存中读取
 >3. 浏览器解析url，提取出协议、主机、端口号、资源路径等
@@ -98,7 +115,7 @@
 >17. 布局（layout）
 >18. 绘制（paint）
 >19. 显示页面
-### 12、网站性能优化
+### 13、网站性能优化
 >1. 减少http请求：合并CSS、JS文件，CSS Sprites，小图转化为base64格式
 >2. 减少dom层级
 >3. CSS放在head中
@@ -110,20 +127,20 @@
 >9. 减少dom的访问
 >10. 不使用CSS表达式与@import
 >11. 样式结构层次尽量简单
-### 13、什么是渐进增强
+### 14、什么是渐进增强
 在web设计时强调可访问性、语义化HTML标签，保证所有人都能访问页面的基本内容和功能，同时为高级浏览器用户提供更好的用户体验。
 >* 所有浏览器都能访问基本内容
 >* 所有浏览器都能使用基本功能
 >* 语义化HTML标签
 >* 通过外部样式增强页面布局
 >* 通过外部脚本增强页面功能
-### 14、HTML语义化及好处
+### 15、HTML语义化及好处
 通过包含语义的标签恰当的表示页面的结构，即使在没有样式的情况下页面也能恰当的展示
 >* 页面结构清晰
 >* 利于SEO
 >* 便于盲人阅读
 >* 没有样式也能够恰当展示
-### 15、HTTP状态码及含义
+### 16、HTTP状态码及含义
 >* 1XX：服务器端已接收到请求，但需要客户端的进一步操作
 >* 2XX：服务器成功接收并处理了请求
 >* 3XX：需要进一步操作以完成请求
@@ -133,13 +150,13 @@
 >* 4XX：客户端错误，请求包含错误的语法或无法完成请求
   >>* 404：请求的资源无法找到
 >* 5XX：服务器错误，服务器在处理请求的过程中发生了错误
-### 16、ES6新特性
+### 17、ES6新特性
 >* 块作用域（let、const）
 >* class、extends
 >* 箭头函数
 >* 模块
 >* promise
-### 17、手写一个ajax请求
+### 18、手写一个ajax请求
 ```javascript
 var request = new XMLHttpRequest(); // 新建XMLHttpRequest对象
 //var request = new ActiveXObject('Microsoft.XMLHTTP'); // 新建Microsoft.XMLHTTP对象
@@ -163,7 +180,7 @@ request.onreadystatechange = function () { // 状态发生变化时，函数被�
 request.open('GET', '/api/categories');
 request.send();
 ```
-### 18、ajax readyState
+### 19、ajax readyState
 >* 0：请求未初始化
 >* 1：服务器连接已建立
 >* 2：正在发送请求
@@ -189,6 +206,13 @@ request.send();
 >- float: left、right
 >- position: absolute、fixed
 >- display: block
+### 2、语义化HTML标签
+使用语义化的HTML标签包裹内容，例如导航使用nav，侧边栏使用aside，顶部和尾部使用header/footer，页面比较独立的部分可以使用article，如用户的评论。
+> 好处：
+>>- 使文档结构清晰，便于组织和维护
+>>- 即使在没有样式的情况下也能够友好显示
+>>- 利于搜索引擎理解，便于SEO
+>>- 方便盲人阅读
 ## CSS相关问题
 ### 1、[三栏布局](https://zhuanlan.zhihu.com/p/25070186?refer=learncoding)
 ### 2、padding的取值单位有哪些，当为百分比时是如何取值的
