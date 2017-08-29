@@ -65,16 +65,7 @@
 | IE|Trident|-ms-|
 | FireFox|Gecko|-moz-|
 | Opera|Presto|-o-|
-### 11、浏览器常见的兼容性问题
->* CSS兼容问题
-  >>1. png24位图片在ie6上出现背景，解决方案使用8位png图片
-  >>2. 浮动元素设置了margin在IE6下会产生双倍margin,解决方案将浮动元素设置display: inline
-  >>3. 盒模型差异：IE盒子模型，标准盒子模型
-  >>4.  Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。
->* JS兼容性问题
-  >>1. IE下event不存在target属性,使用srcElement代替
-  >>2. event的x,y在IE中支持，pageX和pageY在Firefox中支持
-  >>3. 老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+### 11、[浏览器常见的兼容性问题](https://juejin.im/post/59a3f2fe6fb9a0249471cbb4?utm_source=gold_browser_extension)
 ### 12、从浏览器地址栏输入url到显示页面的步骤
 >1. 在浏览器中输入url并回车
 >2. 浏览器查看该url对应的缓存是否存在，存在的话检查是否过期（命中强缓存），没有过期的话直接从缓存中读取
