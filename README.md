@@ -3,12 +3,16 @@
 ## 综合性问题
 ### 1、[vue双向绑定的原理](https://segmentfault.com/a/1190000006599500)
 > Vue通过数据劫持和发布者/订阅者模式来实现双向数据绑定，通过Object.defineProperty()对象方法来劫持属性的访问描述符，在getter中进行订阅，在setter中进行发布。
-### 2、[虚拟DOM的原理](http://www.jianshu.com/p/ec4a1b7d37dd)
-> 
-### 3、[promise的原理](https://zhuanlan.zhihu.com/p/25178630)
-### 4、[前端页面渲染机制](http://blog.codingplayboy.com/2017/03/29/webpage_render/#DOM)
-### 5、[viewport详解](https://github.com/ant-design/ant-design-mobile/wiki/viewport%E8%AF%A6%E8%A7%A3)
-### 6、[块格式上下文BFC](https://juejin.im/post/5909db2fda2f60005d2093db)
+### 2、[Vue生命周期](https://segmentfault.com/a/1190000008010666)
+### 3、[虚拟DOM的原理](http://www.jianshu.com/p/ec4a1b7d37dd)
+### 4、[gulp与webpack的区别](http://www.cnblogs.com/lovesong/p/6413546.html)
+>- gulp/grunt是一种构建工具，能够优化前端的工作流程，比如自动刷新页面,压缩css、js、图片,编译sass等等。简单来说，就是使用Gulp/Grunt，然后配置你需要的任务，就可以把以前需要手工做的事情让它它自动进行。
+>- seajs/requirejs：是一种在线"编译" 模块的方案，相当于在页面上加载一个 CMD/AMD 解释器。这样浏览器就认识了 define、exports、module 这些东西，也就实现了模块化。
+>- browserify/webpack：是一个预编译模块的方案，相比于上面 ，这个方案更加智能。没用过browserify，这里以webpack为例。首先，它是预编译的，不需要在浏览器中加载解释器。另外，你在本地直接写JS，不管是 AMD/CMD/ES6 风格的模块化，它都能认识，并且编译成浏览器认识的JS。
+### 4、[promise的原理](https://zhuanlan.zhihu.com/p/25178630)
+### 5、[前端页面渲染机制](http://blog.codingplayboy.com/2017/03/29/webpage_render/#DOM)
+### 6、[viewport详解](https://github.com/ant-design/ant-design-mobile/wiki/viewport%E8%AF%A6%E8%A7%A3)
+### 7、[块格式上下文BFC](https://juejin.im/post/5909db2fda2f60005d2093db)
 >1. BFC的触发条件
   >>* 根元素，即HTML元素
   >>* float非none
@@ -26,7 +30,7 @@
   >>* 阻止元素被浮动元素覆盖
   >>* 包含浮动元素
   >>* 阻止外边距合并
-### 7、XSS与CSRF
+### 8、XSS与CSRF
 >- [XSS:跨站脚本攻击](http://mp.weixin.qq.com/s/6ChuUdOm7vej8vQ3dbC8fw)
 >> 攻击者通过一些手段，将一些恶意内容，比如js脚本，插入到受攻击的网站，用户使用浏览器进行访问时就会受到攻击。分为三种类型：
 >>>1. 存储型XSS：数据库中存有的存在XSS攻击的数据，返回给客户端。若数据未经过任何转义，被浏览器渲染。就可能导致XSS攻击
