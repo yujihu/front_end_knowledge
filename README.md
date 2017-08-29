@@ -2,7 +2,9 @@
 
 ## 综合性问题
 ### 1、[vue双向绑定的原理](https://segmentfault.com/a/1190000006599500)
+> Vue通过数据劫持和发布者/订阅者模式来实现双向数据绑定，通过Object.defineProperty()对象方法来劫持属性的访问描述符，在getter中进行订阅，在setter中进行发布。
 ### 2、[虚拟DOM的原理](http://www.jianshu.com/p/ec4a1b7d37dd)
+> 
 ### 3、[promise的原理](https://zhuanlan.zhihu.com/p/25178630)
 ### 4、[前端页面渲染机制](http://blog.codingplayboy.com/2017/03/29/webpage_render/#DOM)
 ### 5、[viewport详解](https://github.com/ant-design/ant-design-mobile/wiki/viewport%E8%AF%A6%E8%A7%A3)
@@ -262,6 +264,32 @@ request.send();
 - 解决方案
 >- 问题一：将元素设置成定位元素
 >- 问题二：去掉父元素的z-index属性
+### 6、[offsetTop/offsetLeft/offsetWidth/offsetHeight/offsetParent](http://www.cnblogs.com/xiaohuochai/p/5828369.html)
+偏移量(offset dimension)是javascript中的一个重要的概念。涉及到偏移量的主要是offsetLeft、offsetTop、offsetHeight、offsetWidth这四个属性。偏移参照定位父级offsetParent。
+![](images/offset.png)
+>>- offsetParent：与元素最近的定位（position非static）父元素
+>>>1. 元素自身有fixed定位，offsetParent的结果为null
+>>>2. 元素自身无fixed定位，且父级元素都未经过定位，offsetParent的结果为  &lt;body&gt;
+>>>3. 元素自身无fixed定位，且父级元素存在经过定位的元素，offsetParent的结果为离自身元素最近的经过定位的父级元素
+>>>4. body元素的offsetParent是null
+>>- offsetWidth =  border-left-width + padding-left + width + padding-right + border-right-width + 垂直滚动条宽度; 
+>>- offsetHeight =  border-top-width + padding-top + height + padding-bottom + border-bottom-width + 水平滚动条高度;
+>>- offsetTop： 元素的上外边框至offsetParent元素的上内边框之间的像素距离
+>>- offsetLeft：元素的左外边框至offsetParent元素的左内边框之间的像素距离
+### 7、scrollTop/scrollLeft/scrollWidth/scrollHeight
+![](images/scroll.png)
+>>- scrollHeight：在没有滚动条的情况下，元素内容的总高度
+>>- scrollWidth：在没有滚动条的情况下，元素内容的总宽度
+>>- scrollLeft：被隐藏在内容区域左侧的像素数，通过设置这个属性可以改变元素的滚动位置
+>>- scrollTop：被隐藏在内容区域上方的像素数，通过设置这个属性可以改变元素的滚动位置
+### 8、clientTop/clientLeft/clientWidth/clientHeight
+>>- clientLeft: 元素的内边距的外边缘和边框的外边缘的距离，实际就是左边框的宽度
+>>- clientTop：元素上边框高度
+>>- clientWidth：元素内容区的宽度+左右内边距的宽度，不包括外边距、边框、垂直滚动条的高度
+>>- clientHeight：元素内容区的高度+上下内边距的高度，不包括外边距、边框、水平滚动条的高度
+### 9、getClientRects()/getBoundingClientRect()
+### 10、[clientHeight , scrollHeight , offsetHeight之间的区别及兼容方案](http://www.cnblogs.com/nanshanlaoyao/p/5964730.html)
+![](images/client.png)
 ## JS相关问题
 ### 1、原型链属性遮蔽
 >* 如果一个普通的名为foo的数据访问属性在[[Prototype]]链的高层某处被找到，而且没有被标记为只读（writable:false），那么一个名为foo的新属性就直接添加到 myObject上，形成一个遮蔽属性。
