@@ -7,12 +7,12 @@
 ### 3、[虚拟DOM的原理](http://www.jianshu.com/p/ec4a1b7d37dd)
 ### 4、[gulp与webpack的区别](http://www.cnblogs.com/lovesong/p/6413546.html)
 >- gulp/grunt是一种构建工具，能够优化前端的工作流程，比如自动刷新页面,压缩css、js、图片,编译sass等等。简单来说，就是使用Gulp/Grunt，然后配置你需要的任务，就可以把以前需要手工做的事情让它它自动进行。
->- seajs/requirejs：是一种在线"编译" 模块的方案，相当于在页面上加载一个 CMD/AMD 解释器。这样浏览器就认识了 define、exports、module 这些东西，也就实现了模块化。
->- browserify/webpack：是一个预编译模块的方案，相比于上面 ，这个方案更加智能。没用过browserify，这里以webpack为例。首先，它是预编译的，不需要在浏览器中加载解释器。另外，你在本地直接写JS，不管是 AMD/CMD/ES6 风格的模块化，它都能认识，并且编译成浏览器认识的JS。
+>- seajs/requirejs：是一种在线"编译"模块的方案，相当于在页面上加载一个 CMD/AMD 解释器。这样浏览器就认识了 define、exports、module这些东西，也就实现了模块化。
+>- browserify/webpack：是一个预编译模块的方案，相比于上面，这个方案更加智能。没用过browserify，这里以webpack为例。首先，它是预编译的，不需要在浏览器中加载解释器。另外，你在本地直接写JS，不管是 AMD/CMD/ES6风格的模块化，它都能认识，并且编译成浏览器认识的JS。
 ### 4、[promise的原理](https://zhuanlan.zhihu.com/p/25178630)
-### 5、[前端页面渲染机制](http://blog.codingplayboy.com/2017/03/29/webpage_render/#DOM)
-### 6、[viewport详解](https://github.com/ant-design/ant-design-mobile/wiki/viewport%E8%AF%A6%E8%A7%A3)
-### 7、[块格式上下文BFC](https://juejin.im/post/5909db2fda2f60005d2093db)
+### 6、[前端页面渲染机制](http://blog.codingplayboy.com/2017/03/29/webpage_render/#DOM)
+### 7、[viewport详解](https://github.com/ant-design/ant-design-mobile/wiki/viewport%E8%AF%A6%E8%A7%A3)
+### 8、[块格式上下文BFC](https://juejin.im/post/5909db2fda2f60005d2093db)
 >1. BFC的触发条件
   >>* 根元素，即HTML元素
   >>* float非none
@@ -30,7 +30,7 @@
   >>* 阻止元素被浮动元素覆盖
   >>* 包含浮动元素
   >>* 阻止外边距合并
-### 8、XSS与CSRF
+### 9、XSS与CSRF
 >- [XSS:跨站脚本攻击](http://mp.weixin.qq.com/s/6ChuUdOm7vej8vQ3dbC8fw)
 >> 攻击者通过一些手段，将一些恶意内容，比如js脚本，插入到受攻击的网站，用户使用浏览器进行访问时就会受到攻击。分为三种类型：
 >>>1. 存储型XSS：数据库中存有的存在XSS攻击的数据，返回给客户端。若数据未经过任何转义，被浏览器渲染。就可能导致XSS攻击
@@ -47,21 +47,21 @@
 >> 防御举措：
 >>>- referer白名单
 >>>- 请求中携带token
-### 8、不支持冒泡的事件
+### 10、不支持冒泡的事件
 >* mouseenter、mouseleave
 >* load、unload
 >* focus、blur
 >* error
 >* abort（中断，图片记载中断，请求发送中断等）
 >* resize
-### 9、前端SEO注意事项
+### 11、前端SEO注意事项
 >1. 合理设置title、description、keywords，三者的权重递减
 >2. 语义化HTML，符合W3C规范
 >3. 重要的内容放在最前面
 >4. 少用iframe
 >5. 非装饰性图片添加alt属性
 >6. 提高网站的响应速度
-### 10、浏览器内核与对应前缀
+### 12、浏览器内核与对应前缀
 | 浏览器| 内核|前缀|
 | --------|--------|--------|
 | Chrome| WebKit |-webkit-|
@@ -69,8 +69,8 @@
 | IE|Trident|-ms-|
 | FireFox|Gecko|-moz-|
 | Opera|Presto|-o-|
-### 11、[浏览器常见的兼容性问题](https://juejin.im/post/59a3f2fe6fb9a0249471cbb4?utm_source=gold_browser_extension)
-### 12、从浏览器地址栏输入url到显示页面的步骤
+### 13、[浏览器常见的兼容性问题](https://juejin.im/post/59a3f2fe6fb9a0249471cbb4?utm_source=gold_browser_extension)
+### 14、从浏览器地址栏输入url到显示页面的步骤
 >1. 在浏览器中输入url并回车
 >2. 浏览器查看该url对应的缓存是否存在，存在的话检查是否过期（命中强缓存），没有过期的话直接从缓存中读取
 >3. 浏览器解析url，提取出协议、主机、端口号、资源路径等
@@ -111,7 +111,7 @@
 >17. 布局（layout）
 >18. 绘制（paint）
 >19. 显示页面
-### 13、网站性能优化
+### 15、网站性能优化
 >1. 减少http请求：合并CSS、JS文件，CSS Sprites，小图转化为base64格式
 >2. 减少dom层级
 >3. CSS放在head中
@@ -123,20 +123,20 @@
 >9. 减少dom的访问
 >10. 不使用CSS表达式与@import
 >11. 样式结构层次尽量简单
-### 14、什么是渐进增强
+### 16、什么是渐进增强
 在web设计时强调可访问性、语义化HTML标签，保证所有人都能访问页面的基本内容和功能，同时为高级浏览器用户提供更好的用户体验。
 >* 所有浏览器都能访问基本内容
 >* 所有浏览器都能使用基本功能
 >* 语义化HTML标签
 >* 通过外部样式增强页面布局
 >* 通过外部脚本增强页面功能
-### 15、HTML语义化及好处
+### 17、HTML语义化及好处
 通过包含语义的标签恰当的表示页面的结构，即使在没有样式的情况下页面也能恰当的展示
 >* 页面结构清晰
 >* 利于SEO
 >* 便于盲人阅读
 >* 没有样式也能够恰当展示
-### 16、HTTP状态码及含义
+### 17、HTTP状态码及含义
 >* 1XX：服务器端已接收到请求，但需要客户端的进一步操作
 >* 2XX：服务器成功接收并处理了请求
 >* 3XX：需要进一步操作以完成请求
@@ -146,13 +146,13 @@
 >* 4XX：客户端错误，请求包含错误的语法或无法完成请求
   >>* 404：请求的资源无法找到
 >* 5XX：服务器错误，服务器在处理请求的过程中发生了错误
-### 17、ES6新特性
+### 18、ES6新特性
 >* 块作用域（let、const）
 >* class、extends
 >* 箭头函数
 >* 模块
 >* promise
-### 18、手写一个ajax请求
+### 19、手写一个ajax请求
 ```javascript
 var request = new XMLHttpRequest(); // 新建XMLHttpRequest对象
 //var request = new ActiveXObject('Microsoft.XMLHTTP'); // 新建Microsoft.XMLHTTP对象
@@ -176,7 +176,7 @@ request.onreadystatechange = function () { // 状态发生变化时，函数被�
 request.open('GET', '/api/categories');
 request.send();
 ```
-### 19、ajax readyState
+### 20、ajax readyState
 >* 0：请求未初始化
 >* 1：服务器连接已建立
 >* 2：正在发送请求
