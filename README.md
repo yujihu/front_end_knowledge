@@ -1,7 +1,7 @@
 # 前端知识点
 
 ## 综合性问题
-### 1、[vue双向绑定的原理](https://segmentfault.com/a/1190000006599500)
+### 1、[vue双向绑定的原理](http://www.cnblogs.com/kidney/p/6052935.html?utm_source=gold_browser_extension)
 > Vue通过数据劫持和发布者/订阅者模式来实现双向数据绑定，通过Object.defineProperty()对象方法来劫持属性的访问描述符，在getter中进行订阅，在setter中进行发布。
 ### 2、[Vue生命周期](https://segmentfault.com/a/1190000008010666)
 ### 3、[虚拟DOM的原理](http://www.jianshu.com/p/ec4a1b7d37dd)
@@ -321,3 +321,43 @@ function debounce(fn, interval) {
   }
 }
 ```
+### 3、DOM操作
+>1. 创建节点
+```javascript
+document.createElement(eName);　　//创建一个元素节点
+document.createAttribute(attrName); //创建一个属性节点
+document.createTextNode(text);　　　//创建一个文本节点
+document.createDocumentFragment() //创建文档片段，把一个 DocumentFragment节点插入文档树时，插入的不是 DocumentFragment自身，而是它的所有子孙节点
+```
+>2. 操作节点
+```javascript
+appendChild() //追加子节点
+removeChild() //删除子节点
+replaceChild() //替换子节点
+insertBefore() //在某个子节点之前插入节点
+cloneNode(true | false); //复制某个节点，参数：是否复制原节点的所有属性
+```
+>3. 查找节点
+```javascript
+document.getElementById(id); //返回对拥有指定id的第一个对象进行访问
+document.getElementsByName(name); //返回带有指定名称的节点集合　　 注意拼写:Elements
+document.getElementsByTagName(tagname); //返回带有指定标签名的对象集合　  注意拼写：Elements
+document.getElementsByClassName(classname); //返回带有指定class名称的对象集合 注意拼写：Elements
+document.querySelector(selectors); //返回文档中匹配指定的选择器组的第一个元素
+document.querySelectorAll(selectors); //返回与指定的选择器组匹配的文档中的元素列表
+```
+| 元素类型 | 节点类型 |
+|------|------|
+|元素element|1|
+|属性attr|2|
+|文本text|3|
+|注释comments|8|
+|文档document|9|
+### 4、[querySelectorAll 方法相比 getElementsBy 系列方法有什么区别](https://www.zhihu.com/question/24702250)
+>1. 所属规范不同：querySelectorAll属于W3C中的Selectors API规范，getElementsBy系列则属于W3C的DOM规范 
+>2. 接收参数不同：querySelectorAll 方法接收的参数是一个 CSS 选择符。而 getElementsBy 系列接收的参数只能是单一的className、tagName 和 name
+>3. 返回值不同：querySelectorAll返回的是一个静态的NodeList ，而 getElementsBy系列的返回的是一个动态的HTMLCollection 
+### 5、innerHTML和appendChild的区别
+>1. appendChild是每次插入的内容都成为该元素的最后一个子元素（插入），innerHTML是整个重写该元素内的所有HTML代码，也就是说之前写的那些都会被覆盖（覆盖）
+>2. 通过appendChild添加到的是dom对象，返回的也是dom对象，可以通过dom对象访问获取元素的各种属性，而innerHTML则是纯字符串，不能获取内部元素的属性。
+>3. 如果appendChild的参数是页面存在的一个元素，则执行后原来的元素会被移除，如document.getElement("a").appendChild(document.getElementByIdx("b"))，执行后，b元素会先被移除，然后再添加到a中。 
